@@ -105,9 +105,7 @@ void BenchmarkKernel(const CLApp &cli, const GraphT_ &g,
   Timer trial_timer;
   for (int iter=0; iter < cli.num_trials(); iter++) {
     trial_timer.Start();
-    printf("point 4\n");
     auto result = kernel(g);
-    printf("point 5\n");
     trial_timer.Stop();
     PrintTime("Trial Time", trial_timer.Seconds());
     total_seconds += trial_timer.Seconds();

@@ -76,10 +76,16 @@ int64_t TDStep(const Graph &g, pvector<NodeID> &parent,
       for (NodeID v : g.out_neigh(u)) {
         NodeID curr_val = parent[v];
         if (curr_val < 0) {
+
           if (compare_and_swap(parent[v], curr_val, u)) {
             lqueue.push_back(v);
             scout_count += -curr_val;
           }
+/*
+          parent[v] = u;
+          lqueue.push_back(v);
+          scout_count += -curr_val;
+*/
         }
       }
     }
